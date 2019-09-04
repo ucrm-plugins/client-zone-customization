@@ -3,7 +3,7 @@
     "information": {
         "name": "client-zone-customization",
         "displayName": "Client Zone Customization",
-        "description": "A simple plugin to perform additional client zone customizations in UCRM.",
+        "description": "A simple plugin to perform additional client zone customization in UCRM.",
         "url": "https://github.com/ucrm-plugins/client-zone-customization",
         "version": "1.0.0",
         "ucrmVersionCompliancy": {
