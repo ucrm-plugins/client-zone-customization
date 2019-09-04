@@ -13,18 +13,18 @@ https://github.com/ucrm-plugins/client-zone-customization/raw/master/client-zone
 ## Documentation
 Once enabled, you can configure the following options in the Plugin Settings:
 
-###### Apply Large Column Fix
+##### Apply Large Column Fix
 Since a good portion of my own Clients visiting the Client Zone will not have any services established, I felt it was
 unappealing to have only 50% of the content width used by the one and only column.  This feature allows for the entire
 content area to be used when no services exist.
 
-###### Hide "Is Lead" Row
+##### Hide "Is Lead" Row
 As the label suggests, when enabled, this hides the "Is lead" row from the details.
 
-###### Hide "Organization" Row
+##### Hide "Organization" Row
 Similarly to above, when enabled, this hides the "Organization" row from the details.
 
-###### Custom JavaScript
+##### Custom JavaScript
 Really the best part!  I have been wanting UBNT to add Custom JavaScript capabilities to the UCRM system since plugins
 were first introduced.  And now thanks to the "widgets", we can execute our own JavaScript code on any of the pages that
 currently support widget inclusion.
@@ -36,7 +36,7 @@ For example, hiding the "Is lead" row uses only a single line of code:
 $("#client-contact-details .details-table tbody tr:nth-child(7)").css("display", "none");
 ``` 
 
-###### You might be wondering...
+##### You might be wondering...
 Why we don't just use the Custom CSS feature built into UCRM already?
 
 And the unfortunate answer is that the Custom CSS is sanitized to remove some of the necessary selectors like
