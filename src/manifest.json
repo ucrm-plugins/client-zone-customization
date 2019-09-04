@@ -1,0 +1,56 @@
+{
+    "version": "1",
+    "information": {
+        "name": "client-zone-customization",
+        "displayName": "Client Zone Customization",
+        "description": "A simple plugin to perform additional client zone customizations in UCRM.",
+        "url": "https://github.com/ucrm-plugins/client-zone-customization",
+        "version": "1.0.0",
+        "ucrmVersionCompliancy": {
+            "min": "3.0.0",
+            "max": null
+        },
+        "unmsVersionCompliancy": {
+            "min": "1.0.0",
+            "max": null
+        },
+        "author": "Ryan Spaeth"
+    },
+    "configuration": [
+        {
+            "key": "largeColumnFix",
+            "label": "Apply Large Column Fix?",
+            "description": "When enabled, the column width of the Client Zone Overview page is adjusted to full when no services exist.",
+            "required": 0,
+            "type": "checkbox"
+        },
+        {
+            "key": "hideIsLead",
+            "label": "Hide 'Is Lead' Row?",
+            "description": "When enabled, the 'Is lead' row is hidden from the Client Zone Overview page.",
+            "required": 0,
+            "type": "checkbox"
+        },
+        {
+            "key": "hideOrganization",
+            "label": "Hide 'Organization' Row?",
+            "description": "When enabled, the 'Organization' row is hidden from the Client Zone Overview page.",
+            "required": 0,
+            "type": "checkbox"
+        },
+        {
+            "key": "javascript",
+            "label": "Custom JavaScript",
+            "description": "WARNING: While nothing permanently destructive can occur form using this custom JavaScript, please be cautious.  The jQuery library is available for use here and has been re-referenced to the parent document to allow for more straight-forward selectors.",
+            "required": 0,
+            "type": "textarea"
+        }
+
+    ],
+    "widgets": [
+        {
+            "position": "client-zone/dashboard",
+            "iframeHeight": 27
+        }
+    ]
+}
