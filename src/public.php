@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // Display the small banner content.
-echo file_get_contents(__DIR__."/partials/content.html");
+echo file_get_contents(__DIR__."/public/index.html");
 
 // Get the config file path.
 $configPath = __DIR__."/data/config.json";
@@ -17,23 +17,60 @@ if(file_exists($configPath))
     if(json_last_error() !== JSON_ERROR_NONE)
         exit();
 
-    // Load the jQuery CDN & re-reference $ to the parent document, as that is where we will be executing our selectors!
-    echo file_get_contents(__DIR__."/partials/jquery.html");
+    #region Large Column Fix
 
     // Execute the Large Column Fix...
-    if(array_key_exists("largeColumnFix", $config) && $config["largeColumnFix"])
-        echo file_get_contents(__DIR__."/partials/largeColumnFix.html");
+    if(array_key_exists("largeColumnFix", $config) && $config["largeColumnFix"] !== "")
+    {
+        switch($config["largeColumnFix"])
+        {
+            case "always":
+                echo "<script>clientZone.accountPage.largeColumnFix(true);</script>";
+                break;
+            case "withoutServices":
+                echo "<script>clientZone.accountPage.largeColumnFix();</script>";
+                break;
+        }
+    }
+
+    #endregion
+
+    #region Hide 'Is lead'
 
     // Hide the "Is Lead" row as desired...
     if(array_key_exists("hideIsLead", $config) && $config["hideIsLead"])
-        echo file_get_contents(__DIR__."/partials/hideIsLead.html");
+        echo '<script>clientZone.accountPage.hideClientContactDetailsRow("Lead");</script>';
+
+    #endregion
+
+    #region Hide 'Organization'
 
     // Hide the "Organization" row as desired...
-    if(array_key_exists("hideOrganization", $config) && $config["hideOrganization"])
-        echo file_get_contents(__DIR__."/partials/hideOrganization.html");
+    if (array_key_exists("hideOrganization", $config) && $config["hideOrganization"])
+        echo '<script>clientZone.accountPage.hideClientContactDetailsRow("Organization");</script>';
+
+    #endregion
+
+    #region Branding
+
+    if (array_key_exists("brandLogo", $config) && $config["brandLogo"] &&
+        file_exists(__DIR__."/data/files/{$config["brandLogo"]}"))
+    {
+        $image = file_get_contents(__DIR__."/data/files/{$config["brandLogo"]}");
+        $imageType = finfo_buffer(finfo_open(), $image, FILEINFO_MIME_TYPE);
+        $imageData = base64_encode($image);
+        $imageSource = "data:$imageType;base64,$imageData";
+
+        if (array_key_exists("brandText", $config))
+            $zoneText = $config["brandText"] ?? "";
+
+        echo "<script>clientZone.accountPage.addBranding('$imageSource', '$zoneText');</script>";
+    }
+
+    #endregion
 
     //
-    // NOTE: Add more functionality as needed!
+    // NOTE: Add more "simple" functionality as needed!
     //
 
     // Execute any provided JavaScript code...

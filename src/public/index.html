@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Client Zone Customization</title>
+
+    <base href="/_plugins/client-zone-customization/">
+
+    <link rel="stylesheet" href="public/css/plugin.css">
+
+</head>
+<body>
+
+    <input type="hidden" id="client-zone-customization">
+
+    <div class="notification">
+        This page has being altered by the <a href="https://github.com/ucrm-plugins/client-zone-customization">
+        Client Zone Customization</a> plugin.
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        // NOTE: Re-Reference the $ alias to the parent document (instead of the Plugin's iframe), as we will be using
+        // jQuery's functionality almost exclusively in the parent document's context.
+        let $ = window.parent.$;
+    </script>
+
+    <script src="public/js/functions.js"></script>
+
+</body>
+</html>

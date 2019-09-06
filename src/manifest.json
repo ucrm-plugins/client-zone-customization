@@ -5,7 +5,7 @@
         "displayName": "Client Zone Customization",
         "description": "A simple plugin to perform additional client zone customization in UCRM.",
         "url": "https://github.com/ucrm-plugins/client-zone-customization",
-        "version": "1.0.0",
+        "version": "1.1.0",
         "ucrmVersionCompliancy": {
             "min": "3.0.0",
             "max": null
@@ -20,10 +20,16 @@
         {
             "key": "largeColumnFix",
             "label": "Apply Large Column Fix?",
-            "description": "When enabled, the column width of the Client Zone Overview page is adjusted to full when no services exist.",
-            "required": 0,
-            "type": "checkbox"
+            "description": "When enabled, the column width of the Client Zone Overview page is adjusted to full.",
+            "required": 1,
+            "type": "choice",
+            "choices": {
+                "Never": "",
+                "Always": "always",
+                "Without Services": "withoutServices"
+            }
         },
+
         {
             "key": "hideIsLead",
             "label": "Hide 'Is Lead' Row?",
@@ -38,6 +44,23 @@
             "required": 0,
             "type": "checkbox"
         },
+
+        {
+            "key": "brandLogo",
+            "label": "Brand Logo",
+            "description": "A custom logo is to show in the Client Zone header.  NOTE: Only available on the 'Account' page for now.",
+            "required": 0,
+            "type": "file"
+        },
+        {
+            "key": "brandText",
+            "label": "Brand Text",
+            "description": "Custom text to replace the existing 'Client Zone' text. If blank, the default is used.",
+            "required": 0
+        },
+
+
+
         {
             "key": "javascript",
             "label": "Custom JavaScript",
